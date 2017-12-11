@@ -1,0 +1,29 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+      "airbnb",
+      "prettier",
+      "prettier/flowtype",
+      "prettier/react"
+  ],
+  "plugins": [
+      "flowtype",
+      "prettier"
+  ],
+  "env": {
+      "es6": true,
+      "node": true,
+      "browser": true,
+      "jest": true
+  },
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
+  },
+  "rules" : {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-noninteractive-element-interactions": 0
+  }
+}

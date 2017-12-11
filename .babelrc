@@ -1,0 +1,19 @@
+{
+  "presets": [
+    "react",
+    "flow",
+    "es2015"
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "transform-flow-strip-types",
+        "transform-es2015-modules-commonjs",
+        "dynamic-import-node"
+      ]
+    }
+  },
+  "plugins": [
+    "syntax-dynamic-import"
+  ]
+}
