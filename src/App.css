@@ -1,0 +1,68 @@
+.hidden {
+  display: none;
+}
+
+.toggle-wrapper label:before, .toggle-wrapper label:after {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+.toggle-wrapper label {
+  width: 50px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: #ccc;
+  position: relative;
+  display: inline-block;
+  margin: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.toggle-wrapper input:checked+label {
+  background-color: #43d64f;
+}
+
+.toggle-wrapper label:after {
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.toggle-wrapper input:checked+label:after {
+  left: auto;
+  right: 5px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
