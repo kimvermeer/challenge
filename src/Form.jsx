@@ -9,9 +9,9 @@ import Checkbox from "./components/Checkbox";
 import Toggle from "./components/Toggle";
 import Select, { Option } from "./components/Select";
 import { failSubmit, succeedSubmit } from "./actions/form";
-import { getSubmitError } from "./reducers/formReducer";
+import { getSubmitValidation } from "./reducers/formReducer";
 
-type FormModel = {
+export type FormModel = {
   a: Array<string>,
   b: string,
   text: string,
@@ -26,7 +26,7 @@ type Props = {
   setTouched: () => void,
   setProperty: (property: string, value: any) => void,
   model: Object,
-  submitError: string,
+  submitValidation: ?string,
   failSubmit: (err: Error) => void,
   succeedSubmit: (data: FormModel) => void
 };
@@ -99,7 +99,7 @@ class Form extends Component {
 
     submitIt(submittableObject)
       .then(() => {
-        this.props.succeedSubmit();
+        this.props.succeedSubmit(submittableObject);
       })
       .catch((err: Error) => {
         this.props.failSubmit(err);
@@ -202,7 +202,7 @@ class Form extends Component {
             fields.c.isValid && (
               <div>
                 <button type="submit">Submit</button>
-                <p>{this.props.submitError}</p>
+                <p>{this.props.submitValidation}</p>
               </div>
             )}
         </Validator.Form>
@@ -234,7 +234,7 @@ const enhance = withValidation({
 
 export default connect(
   store => ({
-    submitError: getSubmitError(store)
+    submitValidation: getSubmitValidation(store)
   }),
   {
     failSubmit,
