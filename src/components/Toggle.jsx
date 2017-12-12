@@ -39,6 +39,7 @@ class Toggle extends React.Component {
           value={this.props.value}
         />
         <label htmlFor={this.props.value} onClick={this.onClick} />
+        <span>{this.props.value}</span>
       </div>
     );
   }

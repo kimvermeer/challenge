@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toggle renders correctly 1`] = `
+<div
+  className="toggle-wrapper"
+>
+  <input
+    checked={false}
+    className="toggle hidden"
+    name="B1"
+    onChange={[Function]}
+    type="checkbox"
+    value="B1"
+  />
+  <label
+    htmlFor="B1"
+    onClick={[Function]}
+  />
+  <span>
+    B1
+  </span>
+</div>
+`;

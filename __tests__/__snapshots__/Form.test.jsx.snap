@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form renders correctly 1`] = `
+<div
+  className="Form"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group"
+    >
+      <div>
+        <label
+          htmlFor="a1-checkbox"
+        >
+          <input
+            checked={undefined}
+            id="a1-checkbox"
+            onChange={[Function]}
+            type="checkbox"
+            value="A1"
+          />
+          A1
+        </label>
+      </div>
+      <div>
+        <label
+          htmlFor="a2-checkbox"
+        >
+          <input
+            checked={undefined}
+            id="a2-checkbox"
+            onChange={[Function]}
+            type="checkbox"
+            value="A2"
+          />
+          A2
+        </label>
+      </div>
+    </div>
+    <span />
+  </form>
+</div>
+`;

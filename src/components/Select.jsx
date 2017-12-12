@@ -4,6 +4,7 @@ import type { Children } from 'react';
 
 type Props = {
   value: string,
+  name: string,
   onChange: () => void,
   children: Children,
 };
@@ -13,9 +14,10 @@ type OptionProps = {
   hidden: bool,
 };
 
-const Select = ({ value, onChange, children }: Props) => (
+const Select = ({ value, name, onChange, children }: Props) => (
   <select
     value={value}
+    name={name}
     onChange={(val) => { onChange(val) }}
   >
     {children}

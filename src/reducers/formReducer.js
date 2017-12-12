@@ -24,10 +24,7 @@ export default (state: Store = initialState, action: Action) => {
     case FORM.SUBMIT_SUCCEED: {
       return state
         .set("validation", "Success!")
-        .set(
-          "form",
-          state.get("form").mergeDeep(fromJS(action.payload.data))
-        );
+        .set("form", state.get("form").mergeDeep(fromJS(action.payload.data)));
     }
     default: {
       return state;

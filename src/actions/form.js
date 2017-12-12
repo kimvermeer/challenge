@@ -1,6 +1,6 @@
 // @flow
 import FORM from "../constants/form";
-import type { FormModel } from '../Form';
+import type { FormModel } from "../Form";
 
 export const failSubmit = (error: Error) => ({
   type: FORM.SUBMIT_FAIL,

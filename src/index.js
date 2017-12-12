@@ -5,7 +5,7 @@ import { createStore } from "redux";
 
 import "./index.css";
 import Form from "./Form";
-import formReducer from './reducers/formReducer';
+import formReducer from "./reducers/formReducer";
 import registerServiceWorker from "./registerServiceWorker";
 
 const store = createStore(formReducer);

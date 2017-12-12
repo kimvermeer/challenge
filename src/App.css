@@ -38,6 +38,21 @@
   right: 5px;
 }
 
+.toggle-wrapper span {
+  display: block;
+  float: left;
+  margin-top: 12px;
+}
+
+.form-group {
+  margin: 10px 0;
+}
+
+.form-group p {
+  font-size: 12px;
+  color: #666;
+}
+
 .App {
   text-align: center;
 }

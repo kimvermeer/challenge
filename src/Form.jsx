@@ -31,11 +31,12 @@ type Props = {
   succeedSubmit: (data: FormModel) => void
 };
 
-class Form extends Component {
+export class _Form extends Component {
   static props: Props;
 
   state = {
     textError: null,
+    inputText: "",
     isCheckButtonDisabled: true
   };
 
@@ -75,6 +76,13 @@ class Form extends Component {
   };
 
   onInputKeyDown = (e: KeyboardEvent) => {
+    // Check if pressed key is 'Enter'
+    if (e.keyCode === 13 && !this.state.isCheckButtonDisabled) {
+      this.validateTextInput();
+    }
+  };
+
+  onTextChange = (e: InputEvent) => {
     if (
       this.state.isCheckButtonDisabled &&
       this.textInput.value.trim().length
@@ -82,10 +90,7 @@ class Form extends Component {
       this.setState({ isCheckButtonDisabled: false });
     }
 
-    // Check if pressed key is 'Enter'
-    if (e.keyCode === 13 && !this.state.isCheckButtonDisabled) {
-      this.validateTextInput();
-    }
+    this.setState({ inputText: e.target.value });
   };
 
   onSubmit = () => {
@@ -107,7 +112,7 @@ class Form extends Component {
   };
 
   validateTextInput = () => {
-    const { value } = this.textInput;
+    const value = this.state.inputText;
 
     /**
      * Disable the 'check' button so that the check function doesn't run multiple times
@@ -137,19 +142,21 @@ class Form extends Component {
     return (
       <div className="Form">
         <Validator.Form onSubmit={this.onSubmit}>
-          <Checkbox
-            id="a1-checkbox"
-            value="A1"
-            onChange={this.onCheckboxChange}
-          />
-          <Checkbox
-            id="a2-checkbox"
-            value="A2"
-            onChange={this.onCheckboxChange}
-          />
+          <div className="form-group">
+            <Checkbox
+              id="a1-checkbox"
+              value="A1"
+              onChange={this.onCheckboxChange}
+            />
+            <Checkbox
+              id="a2-checkbox"
+              value="A2"
+              onChange={this.onCheckboxChange}
+            />
+          </div>
           <span>{fields.a.errors}</span>
           {fields.a.isValid && (
-            <div>
+            <div className="form-group">
               <Toggle
                 id="b1-toggle"
                 value="B1"
@@ -166,12 +173,15 @@ class Form extends Component {
           )}
           {fields.a.isValid &&
             fields.b.isValid && (
-              <div>
+              <div className="form-group">
                 <input
+                  id="text-input"
                   ref={input => {
                     this.textInput = input;
                   }}
                   onKeyDown={this.onInputKeyDown}
+                  onChange={this.onTextChange}
+                  value={this.state.inputText}
                 />
                 <button
                   type="button"
@@ -186,21 +196,25 @@ class Form extends Component {
           {fields.a.isValid &&
             fields.b.isValid &&
             fields.text.isValid && (
-              <Select
-                onChange={this.onSelectChange}
-                value={this.props.model.c.value}
-              >
-                <Option value="" hidden />
-                <Option value="C1" />
-                <Option value="C2" />
-                <Option value="C3" />
-              </Select>
+              <div className="form-group">
+                <label htmlFor="c-select">C </label>
+                <Select
+                  name="c-select"
+                  onChange={this.onSelectChange}
+                  value={this.props.model.c.value}
+                >
+                  <Option value="" hidden />
+                  <Option value="C1" />
+                  <Option value="C2" />
+                  <Option value="C3" />
+                </Select>
+              </div>
             )}
           {fields.a.isValid &&
             fields.b.isValid &&
             fields.text.isValid &&
             fields.c.isValid && (
-              <div>
+              <div className="form-group">
                 <button type="submit">Submit</button>
                 <p>{this.props.submitValidation}</p>
               </div>
@@ -240,4 +254,4 @@ export default connect(
     failSubmit,
     succeedSubmit
   }
-)(enhance(Form));
+)(enhance(_Form));
